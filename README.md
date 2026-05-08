@@ -495,7 +495,7 @@ public class OrderTest {
 }
 ```
 
-- Ejecutamos `mvn test`
+-  Ejecutamos `mvn test`
 
 ```bash
 # ejecutar mvn test

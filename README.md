@@ -89,8 +89,6 @@ Relacionar cada paso con el flujo real: código → build → artefacto → imag
 El objetivo de crear esta aplicación es enseñar a los desarrolladores y profesionales de la seguridad sobre las vulnerabilidades presentes en las aplicaciones modernas de Android.
 Es una aplicación escrita en java y tienes el [archivo comprimido, store-app.zip en la carpeta files](./files/store-app.zip)
 
-Ya hemos trabajado con ella en la [Tarea de la Unidad 3](../../Unidad3-VulnerabilidadesWeb/TareaUnidad3/README.md), pero ahora vamos a darle significado a las operaciones que realizamos en ese momento.
-
 ---
 # ¿QUÉ ES MAVEN?
 
@@ -121,6 +119,7 @@ mkdir -p Unidad5/Actividad-Maven
 # Nos colocamos en ella
 cd Unidad5/Actividad-Maven
 ```
+![](img/1.png)
 
 La aplicación `store-app` que estamos utilizando está escrito en `Spring`y como hemos visto en el `pom.xml` está escrito para ejecutarse con `java 11`. Por ello necesitamos tener instalado `java 11` para poder ejecutarlo.
 
@@ -129,7 +128,7 @@ La aplicación `store-app` que estamos utilizando está escrito en `Spring`y com
 ```bash
 update-alternatives --list java
 ```
-![](./images/image-17.png)
+![](img/2.png)
 
 Si la tenemos instalada nos aparecerá ahí.
 
@@ -140,6 +139,9 @@ sudo apt update
 # Instalamos Java 11.
 sudo apt install openjdk-11-jdk maven
 ```
+
+![](img/3.png)
+
 4. Le indicamos al sistema que queremos usar java 11
 
 ```bash
@@ -149,7 +151,8 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 ```
 
-![](./images/image-18.png)
+![](img/4.png)
+
 5. Descomprime la aplicación, la tienes [aquí](./files/store-app.zip)
 
 ```bash
@@ -160,7 +163,9 @@ unzip store-app.zip
 ls -l store-app
 ```
 
-![](./images/image-1.png)
+![](img/5.png)
+
+![](img/6.png)
 
 6. Comprueba que tienes instalado `Maven`:
 
@@ -171,7 +176,7 @@ mvn --version
 # sudo apt udate; sudo apt install maven 
 ```
 
-![](./images/image-2.png)
+![](img/7.png)
 
 ---
 # ESTRUCTURA DE UN PROYECTO MAVEN
@@ -183,7 +188,7 @@ cd store-app
 # hacemos listado en forma de árbol del proyecto
 tree 
 ```
-![](./images/image-3.png)
+![](img/8.png)
 
 como vemos, la estructura de una aplicación java es algo así:
 
@@ -221,7 +226,7 @@ mi-proyecto/
 ---
 # ANALIZANDO EL ARCHIVO `pom.xml`. 
 
-Este [`pom.xml`](./files/pom.xml) **configura toda la construcción**: qué bibliotecas necesita, cómo compilar, cómo empaquetar y hasta cómo inicializar la base de datos Derby.  
+Este `pom.xml` **configura toda la construcción**: qué bibliotecas necesita, cómo compilar, cómo empaquetar y hasta cómo inicializar la base de datos Derby.  
 
 Analizando el `pom.xml`  estos son **los elementos más importantes**:
 
@@ -266,7 +271,7 @@ spring-boot-starter-actuator
 - **test**: JUnit y herramientas de pruebas.
 - **actuator**: endpoints de monitoreo y salud.
 
-![](./images/image-4.png)
+![](img/9.png)
 
 4. **Dependencias externas específicas**
 
@@ -308,7 +313,7 @@ sql-maven-plugin
 - **assembly**: crea distribuciones personalizadas.
 - **sql-maven-plugin**: inicializa la base de datos Derby con `tables.sql` y `data.sql`.
 
-![](./images/image-5.png)
+![](img/10.png)
 
 7. **Configuración del compilador**
 
@@ -337,7 +342,7 @@ El ciclo **default** de Maven es el ciclo principal de construcción: valida el 
 
 Como vimos en los contenidos teóricos, las diferentes etapas del ciclo  de un proyecto Maven de una app se pueden ver en la siguiente imagen:  
 
-![Fuente: https://blogs.ua.es/jpm33/2025/07/02/apache-maven-comandos-utiles/](./images/image-6.png)
+![Fuente: https://blogs.ua.es/jpm33/2025/07/02/apache-maven-comandos-utiles/](img/maven.png)
 En Maven, cuando ejecutas una fase, **también ejecutan todas las anteriores** del mismo ciclo de vida. Por ejemplo, si lanzas `mvn package`, Maven habrá pasado antes por `validate`, `compile` y `test`.  
 Por lo tanto el **ciclo vida `default` de Maven realiza**: **validate -> compile -> test -> package -> verify -> install  -> verify** si bien estos dos últimos se referían a la copia del **paquete generado** a los repositorios local y remoto.
 
@@ -352,7 +357,9 @@ Para ello, revisa la estructura, `pom.xml`, configuración básica y disponibili
 mvn validate
 ```
 
-![](./images/image-8.png)
+![](img/11.png)
+
+![](img/12.png)
 
 Como vemos en nuestro caso nos avisa de que ha encontrado problemas, en este caso sólo `warnings` asociado que no se encuentran disponibles los plugins de `org.codehaus.mojo:sql-maven-plugin`.
 
@@ -363,7 +370,8 @@ Intervienen también los recursos que se encuentran en `src/main/resources/` y `
 
 Se construyen las clases compiladas `.class`  y se colocan en `target/classes/`.
 
-![](./images/image-9.png#)
+![](img/13.png)
+
 ```bash
 # compilamos
 mvn compile
@@ -372,7 +380,7 @@ ls target/classes
 # o si queremos verlas en forma de árbol
 tree target/classes
 ```
-![](./images/image-10.png)
+![](img/14.png)
 
 ## Test
 
@@ -495,6 +503,8 @@ public class OrderTest {
 }
 ```
 
+![](img/15.png)
+
 -  Ejecutamos `mvn test`
 
 ```bash
@@ -504,11 +514,13 @@ mvn test
 tree target/classes
 ```
 
-![](./images/image-11.png)
+![](img/16.png)
 
 Como puedes ver descarga las dependencias necesarias y ejecuta las pruebas unitarias, que se ejecutan sin errores.
 
-![](./images/image-12.png)
+![](img/17.png)
+
+![](img/18.png)
 
 ## Package
 
@@ -524,14 +536,13 @@ mvn package
 # comprobar archivo store-app-1.0.0.jar creado
 ls -l target/
 ```
-
-![](./images/image-13.png)
+![](img/19.png)
 
 > ¡¡¡Observa cómo se realizan las operaciones anteriores: validate, compile y test y como tarda bastante más tiempo en ejecutar la creación del paquete!!!
 
 - Se crea el paquete `store-app-1.0.0.jar` que ya puede ser ejecutado por la MV de Java.
 
-![](./images/image-14.png)
+![](img/20.png)
 
 ## Verify
 
@@ -547,7 +558,7 @@ mvn verify
 # ver carpeta de maven
 ls -la /home/$TuNombre/.m2/repository
 ```
-![](./images/image-15.png)
+![](img/21.png)
 
 ## Install
 
@@ -560,7 +571,7 @@ mvn install
 tree ls -la /home/$TuNombre/.m2/repository/es/store-app
 
 ```
-![](./images/image-16.png))
+![](img/22.png)
 
 ## Deploy
 - **mvn deploy**: Copia el fichero .jar a un servidor maven remoto, poniéndolo disponible para cualquier proyecto maven con acceso a ese servidor remoto.
@@ -581,7 +592,7 @@ mvn spring-boot:run
 ```
 Esto compila y arranca la aplicación con el servidor embebido de Spring Boot.
 
-![](./images/image-19.png)
+![](img/23.png)
 
 
 **Opción 2: empaquetar y ejecutar el `.jar`**
@@ -594,8 +605,6 @@ mvn clean package
 # Ejecutamos el `.jar` generado
 java -jar target/store-app-1.0.0.jar
 ```
-
-![](./images/image-21.png)
 
 **Opción 3: ejecutar el `.jar` con un contenedor docker**
 
@@ -618,9 +627,11 @@ docker run --rm -p 8888:8888 \
 
 Accedemos a la aplicación a través de nuestro puerto 8888: http://localhost:8888
 
-![](./images/image-20.png)
+![](img/24.png)
 
 - Finalizamos la aplicación pulsando `Ctrl + c` en el terminal.
+
+![](img/25.png)
 
 ---
 # CICLO DE VIDA `Clean` DE MAVEN
@@ -697,7 +708,8 @@ tree
 php -S 0:8080
 # Para finalizar el servidor php pulsar Ctrl + C
 ```
-![](./images/image-22.png)
+
+![](img/26.png)
 
 Accedemos a la documentación: http://localhost:8080
 

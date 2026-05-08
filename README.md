@@ -1,9 +1,8 @@
-# Herramientas-de-Sistemas-de-Construccion-Maven
+# Herramientas de Sistemas de Construccion: Maven
 
 **Índice**
 
 1. [Objetivos](#objetivos)
-1. [Resultados de Aprendizaje y Criterios de Evaluación](#resultados-de-aprendizaje-y-criterios-de-evaluación)
 1. [Infraestructura y herramientas a utilizar](#infraestructura-y-herramientas-a-utilizar)
 1. [¿Que es store App?](#qué-es-store-app)
 1. [¿Que es Maven?](#qué-es-maven)
@@ -33,11 +32,6 @@
 - Relacionar cada fase del ciclo de vida con una tarea concreta del proceso de construcción.
 
 - Valorar la utilidad de Maven para estandarizar y automatizar el desarrollo.
-
----
-# RESULTADOS DE APRENDIZAJE Y CRITERIOS DE EVALUACION
-
-Esta actividad se relaciona con el resultado de aprendizaje y criterios de evaluación RA5 d.
 
 ---
 # INFRAESTRUCTURA Y HERRAMIENTAS A UTILIZAR.

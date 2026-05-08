@@ -713,7 +713,7 @@ php -S 0:8080
 
 Accedemos a la documentación: http://localhost:8080
 
-![](./images/image-23.png)
+![](img/27.png)
 
 
 ---
@@ -727,3 +727,5 @@ sudo update-alternatives --config java
 # Dejábamos el java que teníamos
 sudo update-alternatives --config javac
 ```
+
+![](img/28.png)
